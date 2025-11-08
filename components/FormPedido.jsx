@@ -1,7 +1,7 @@
 // components/FormPedido.jsx
 import { useState } from "react";
 
-export default function FormPedido({ onCreate }) {
+export default function FormPedido() {
   const [form, setForm] = useState({
     nombre: "",
     dni: "",
@@ -14,14 +14,12 @@ export default function FormPedido({ onCreate }) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const allFilled = Object.values(form).every((v) => v && v.trim() !== "");
-
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (!allFilled) return alert("Completa todos los campos");
-        onCreate(form);
+        console.log("Formulario enviado:", form);
+        console.log("hola");
       }}
     >
       <input
@@ -59,9 +57,7 @@ export default function FormPedido({ onCreate }) {
         <option value="certificado">Informe histórico de titulares</option>
       </select>
 
-      <button type="submit" disabled={!allFilled}>
-        Siguiente / Guardar
-      </button>
+      <button type="submit">Siguiente / Guardar</button>
     </form>
   );
 }
