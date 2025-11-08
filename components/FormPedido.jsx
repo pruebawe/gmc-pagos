@@ -24,17 +24,44 @@ export default function FormPedido({ onCreate }) {
         onCreate(form);
       }}
     >
-      <input name="nombre" placeholder="Nombre completo" value={form.nombre} onChange={handleChange} />
-      <input name="dni" placeholder="DNI" value={form.dni} onChange={handleChange} />
-      <input name="dominio" placeholder="Dominio" value={form.dominio} onChange={handleChange} />
-      <input name="email" placeholder="Email" value={form.email} onChange={handleChange} />
-      <select name="tipoTramite" value={form.tipoTramite} onChange={handleChange}>
+      <input
+        name="nombre"
+        placeholder="Nombre completo"
+        value={form.nombre}
+        onChange={handleChange}
+      />
+      <input
+        name="dni"
+        placeholder="DNI"
+        value={form.dni}
+        onChange={handleChange}
+      />
+      <input
+        name="dominio"
+        placeholder="Dominio"
+        value={form.dominio}
+        onChange={handleChange}
+      />
+      <input
+        name="email"
+        placeholder="Email"
+        value={form.email}
+        onChange={handleChange}
+      />
+      <select
+        name="tipoTramite"
+        value={form.tipoTramite}
+        onChange={handleChange}
+      >
         <option value="">Tipo de trámite</option>
         <option value="informe">Informe de dominio</option>
-        <option value="certificado">Certificado</option>
+        <option value="certificado">Informe de multas</option>
+        <option value="certificado">Informe histórico de titulares</option>
       </select>
 
-      <button type="submit" disabled={!allFilled}>Siguiente / Guardar</button>
+      <button type="submit" disabled={!allFilled}>
+        Siguiente / Guardar
+      </button>
     </form>
   );
 }

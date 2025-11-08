@@ -9,13 +9,17 @@ export default async function handler(req, res) {
   try {
     const payment = req.body; // MercadoPago sends an object - verify structure
     // Dependiendo del type/structure que mande MP
-    const pedidoId = payment?.data?.metadata?.pedidoId || payment?.metadata?.pedidoId;
+    const pedidoId =
+      payment?.data?.metadata?.pedidoId || payment?.metadata?.pedidoId;
 
     const status = payment?.data?.status || payment?.status;
 
     if (pedidoId && status === "approved") {
       const docRef = adminDb.collection("pedidos").doc(pedidoId);
-      await docRef.update({ estadoPago: "aprobado", fechaPago: new Date().toISOString() });
+      await docRef.update({
+        estadoPago: "aprobado",
+        fechaPago: new Date().toISOString(),
+      });
 
       // obtener datos del pedido para enviar mail
       const pedidoSnap = await docRef.get();
@@ -47,4 +51,3 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: error.message });
   }
 }
-

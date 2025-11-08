@@ -14,8 +14,8 @@ export default async function handler(req, res) {
         {
           title: "Informe de dominio",
           quantity: 1,
-          unit_price: 5500
-        }
+          unit_price: 5500,
+        },
       ],
       payer: { email: email || "no-email@example.com" },
       metadata: { pedidoId: id },
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         failure: `${process.env.APP_BASE_URL}/failure`,
       },
       auto_return: "approved",
-      binary_mode: false
+      binary_mode: false,
     };
 
     const mpRes = await mercadopago.preferences.create(preference);
